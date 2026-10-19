@@ -44,8 +44,22 @@ export const searchArticles = async (prompt: string) => {
 };
 
 // ثبت بازدید مقاله
+
 export const recordArticleView = async (articleId: number | string) => {
-  return await apiClient.post(`/articles/view`, { article_id: articleId });
+  try {
+    const storedVisits = localStorage.getItem("visited_articles");
+    let visitedArticles: (number | string)[] = storedVisits ? JSON.parse(storedVisits) : [];
+    if (visitedArticles.includes(articleId)) {
+      return { success: true, message: "بازدید قبلاً ثبت شده است (محلی)." };
+    }
+    const response = await apiClient.post(`/articles/view`, { article_id: articleId });
+    visitedArticles.push(articleId);
+    localStorage.setItem("visited_articles", JSON.stringify(visitedArticles));
+    return response.data;
+  } catch (error) {
+    console.error("خطا در ثبت بازدید:", error);
+    throw error;
+  }
 };
 
 // ================================

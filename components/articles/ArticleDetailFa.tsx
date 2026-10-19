@@ -59,7 +59,7 @@ export default function ArticleDetailFa({ article }: ArticleDetailFaProps) {
   if (!article) return null;
 
   return (
-    <article className="max-w-4xl mx-auto p-4 md:p-6 mt-8">
+    <article className="max-w-4xl mx-auto p-4 md:p-6 mt-32">
       {/* هدر مقاله */}
       <header className="mb-10 text-center">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">{article.title}</h1>

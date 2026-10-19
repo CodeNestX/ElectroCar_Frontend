@@ -35,7 +35,9 @@ export default function ArticlesSection() {
     const fetchArticles = async () => {
       try {
         setLoading(true);
+
         const res = await getLatestArticles();
+        console.log(res);
         
         // بک‌اند در ریسپانس کلید data را برمی‌گرداند
         let fetchedData = res.data?.data || [];
