@@ -417,7 +417,7 @@ export default function Header() {
                 {/* دکمه کاربری داینامیک دسکتاپ */}
                 {user ? (
                   <Link
-                    href="/profile"
+                    href=""
                     className="hidden h-10 items-center gap-2 rounded-full border border-[#39f77b]/30 bg-[#39f77b]/10 px-4 text-sm font-bold text-[#39f77b] transition hover:bg-[#39f77b]/20 sm:flex"
                   >
                     <UserIcon className="h-[18px] w-[18px]" />

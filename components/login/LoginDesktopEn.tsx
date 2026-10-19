@@ -236,7 +236,7 @@ export default function LoginDesktopEn() {
         </div>
 
         {/* Form card */}
-        <div className="w-full max-w-[530px] shrink-0 rounded-[2rem] border border-white/10 bg-[#08151b]/90 p-8 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] backdrop-blur-xl sm:p-9">
+        <div className="w-full max-w-132.5 shrink-0 rounded-[2rem] border border-white/10 bg-[#08151b]/90 p-8 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] backdrop-blur-xl sm:p-9">
           <h2 className="text-3xl font-extrabold leading-tight">{c.title}</h2>
 
           <p className="mt-3 text-sm font-semibold text-gray-300">

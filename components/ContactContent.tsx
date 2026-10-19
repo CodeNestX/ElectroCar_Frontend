@@ -2,9 +2,9 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { sendMessage } from "@/api/services"; // اتصال به بک‌اند
+import { getUserInfo, sendMessage } from "@/api/services"; // اتصال به بک‌اند
 
 // Persian / Arabic digits -> latin 
 function normalizeDigits(value: string) {
@@ -209,6 +209,28 @@ export default function ContactContent() {
   const [sending, setSending] = useState(false);
   const [feedback, setFeedback] = useState<{ type: "ok" | "error"; text: string } | null>(null);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const res = await getUserInfo();
+        console.log(res);
+        if (res && res.data) {
+          setName(`${res.data.data.first_name} ${res.data.data.last_name}`)
+          if (res.data.email != null) {
+            setEmail(res.data.data.email)
+          }
+          if (res.data.mobile == null) {
+            setPhone(res.data.data.mobile)
+          }
+        }
+      } catch (error) {
+        console.log("User is not logged in or token is invalid.");
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
@@ -231,7 +253,7 @@ export default function ContactContent() {
     try {
       // استفاده از سرویس متصل به Axios
       await sendMessage(name, subject, message, mail, mobile);
-      
+
       setFeedback({ type: "ok", text: t.success });
       setName("");
       setEmail("");
@@ -326,26 +348,26 @@ export default function ContactContent() {
                     />
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm text-gray-400">{t.email}</label>
+                    <label className="mb-2 block text-sm text-gray-400">{t.phone}</label>
                     <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="example@email.com"
-                      className={inputClass}
+                      type="tel"
+                      dir="ltr"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder={t.phonePh}
+                      className={`${inputClass} text-start`}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm text-gray-400">{t.phone}</label>
+                  <label className="mb-2 block text-sm text-gray-400">{t.email}</label>
                   <input
-                    type="tel"
-                    dir="ltr"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder={t.phonePh}
-                    className={`${inputClass} text-start`}
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="example@email.com"
+                    className={inputClass}
                   />
                 </div>
 
@@ -374,11 +396,10 @@ export default function ContactContent() {
                 {feedback && (
                   <p
                     role={feedback.type === "error" ? "alert" : "status"}
-                    className={`rounded-xl border px-4 py-3 text-sm ${
-                      feedback.type === "ok"
-                        ? "border-[#39f77b]/30 bg-[#39f77b]/10 text-[#39f77b]"
-                        : "border-red-500/30 bg-red-500/10 text-red-400"
-                    }`}
+                    className={`rounded-xl border px-4 py-3 text-sm ${feedback.type === "ok"
+                      ? "border-[#39f77b]/30 bg-[#39f77b]/10 text-[#39f77b]"
+                      : "border-red-500/30 bg-red-500/10 text-red-400"
+                      }`}
                   >
                     {feedback.text}
                   </p>
