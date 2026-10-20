@@ -300,7 +300,7 @@ export default function ContactContent() {
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
             {/* اطلاعات تماس */}
-            <div>
+            <div className="text-center lg:text-start">
               <p className="text-sm font-semibold text-[#39f77b]">Contact</p>
               <h2 className="mt-3 text-3xl font-bold">{t.contactTitle}</h2>
               <p className="mt-5 leading-8 text-gray-500">{t.contactDesc}</p>
