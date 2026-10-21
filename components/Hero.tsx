@@ -92,7 +92,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[100svh] overflow-hidden">
+    <section className="relative min-h-svh overflow-hidden">
       {/* Background Images with Media Query handling */}
       <picture className="absolute inset-0 h-full w-full">
         {/* برای صفحه‌نمایش‌های کوچک‌تر از 768px (موبایل) */}
@@ -108,18 +108,18 @@ export default function Hero() {
       {/* Overlay (mirrored with the reading direction) */}
       <div
         className={`absolute inset-0 from-[#050b11]/30 via-[#050b11]/60 to-[#050b11] ${
-          isFa ? "bg-gradient-to-l" : "bg-gradient-to-r"
+          isFa ? "bg-linear-to-l" : "bg-linear-to-r"
         }`}
       />
 
-      <div className="site-container relative z-10 flex min-h-[100svh] items-center">
+      <div className="site-container relative z-10 flex min-h-svh items-center">
         <div className="max-w-2xl">
           <div className="mb-5 flex items-center gap-2 text-sm text-gray-300">
             <span className="h-2 w-2 rounded-full bg-[#39f77b]" />
             {t.welcome}
           </div>
 
-          <h1 className="text-4xl font-extrabold leading-[1.5] text-white sm:text-5xl md:text-6xl">
+          <h1 className="text-4xl font-extrabold leading-normal text-white sm:text-5xl md:text-6xl">
             {content.title}
             <br />
             <span className="text-[#39f77b]">{content.highlight}</span>

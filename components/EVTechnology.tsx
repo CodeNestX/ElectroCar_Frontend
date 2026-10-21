@@ -501,14 +501,14 @@ export default function EVTechnology() {
                 onClick={() => setActiveTechnology(technology.id)}
                 className={`group relative flex items-center gap-4 overflow-hidden rounded-2xl border p-3 text-start transition duration-300 sm:p-4 ${
                   isActive
-                    ? "border-[#39f77b]/40 bg-gradient-to-br from-[#39f77b]/[0.12] to-[#39f77b]/[0.03]"
-                    : "border-white/10 bg-[#0b0f16] hover:border-white/20 hover:bg-white/[0.03]"
+                    ? "border-[#39f77b]/40 bg-linear-to-br from-[#39f77b]/12 to-[#39f77b]/3"
+                    : "border-white/10 bg-[#0b0f16] hover:border-white/20 hover:bg-white/3"
                 }`}
               >
                 {/* Active indicator bar */}
                 <span
                   aria-hidden="true"
-                  className={`absolute inset-y-3 start-0 w-[3px] rounded-full bg-[#39f77b] transition-opacity duration-300 ${
+                  className={`absolute inset-y-3 inset-s-0 w-0.75 rounded-full bg-[#39f77b] transition-opacity duration-300 ${
                     isActive ? "opacity-100" : "opacity-0"
                   }`}
                 />
@@ -517,7 +517,7 @@ export default function EVTechnology() {
                   className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border transition duration-300 sm:h-14 sm:w-14 ${
                     isActive
                       ? "border-[#39f77b] bg-[#39f77b] text-[#04120a] shadow-[0_8px_28px_-8px_rgba(57,247,123,0.7)]"
-                      : "border-white/10 bg-white/[0.04] text-[#39f77b] group-hover:border-[#39f77b]/30"
+                      : "border-white/10 bg-white/4 text-[#39f77b] group-hover:border-[#39f77b]/30"
                   }`}
                 >
                   <TechIcon name={technology.icon} className="h-6 w-6 sm:h-7 sm:w-7" />
@@ -550,14 +550,14 @@ export default function EVTechnology() {
         <div
           key={active.id}
           role="tabpanel"
-          className="tech-panel relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#0f1a1a] via-[#0b0f16] to-[#05070b]"
+          className="tech-panel relative overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-[#0f1a1a] via-[#0b0f16] to-[#05070b]"
         >
           {/* Decorative background */}
-          <div className="pointer-events-none absolute -end-24 -top-24 h-72 w-72 rounded-full bg-[#39f77b]/10 blur-3xl" />
+          <div className="pointer-events-none absolute -inset-e-24 -top-24 h-72 w-72 rounded-full bg-[#39f77b]/10 blur-3xl" />
           <TechIcon
             name={active.icon}
             strokeWidth={0.7}
-            className="pointer-events-none absolute -bottom-16 -end-10 h-72 w-72 text-[#39f77b]/[0.07]"
+            className="pointer-events-none absolute -bottom-16 -inset-e-10 h-72 w-72 text-[#39f77b]/[0.07]"
           />
 
           <div className="relative p-6 sm:p-8 lg:p-10">
@@ -589,7 +589,7 @@ export default function EVTechnology() {
               </div>
             </div>
 
-            <div className="my-7 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="my-7 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
 
             {/* About */}
             <p className="text-sm font-semibold text-[#39f77b]">
@@ -607,7 +607,7 @@ export default function EVTechnology() {
               {active.details.map((detail, i) => (
                 <div
                   key={detail}
-                  className="flex gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition hover:border-[#39f77b]/25"
+                  className="flex gap-3 rounded-2xl border border-white/[0.07] bg-white/2.5 p-4 transition hover:border-[#39f77b]/25"
                 >
                   <span
                     dir="ltr"
@@ -664,7 +664,7 @@ export default function EVTechnology() {
               {index < arch.length - 1 && (
                 <span
                   aria-hidden="true"
-                  className="absolute -end-6 top-1/2 z-10 hidden h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-[#39f77b]/30 bg-[#05070b] text-[#39f77b] lg:flex"
+                  className="absolute -inset-e-6 top-1/2 z-10 hidden h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-[#39f77b]/30 bg-[#05070b] text-[#39f77b] lg:flex"
                 >
                   <ChevronIcon className="h-3.5 w-3.5" />
                 </span>
@@ -700,13 +700,13 @@ export default function EVTechnology() {
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+              <div className="rounded-2xl border border-white/10 bg-white/2 p-5">
                 <span className="text-xs text-gray-500">{t.capacityUnit}</span>
 
                 <p className="mt-2 text-xl font-bold text-[#39f77b]">kWh</p>
               </div>
 
-              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+              <div className="rounded-2xl border border-white/10 bg-white/2 p-5">
                 <span className="text-xs text-gray-500">{t.management}</span>
 
                 <p className="mt-2 text-xl font-bold text-[#39f77b]">BMS</p>
@@ -714,7 +714,7 @@ export default function EVTechnology() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-[#39f77b]/20 bg-gradient-to-br from-[#39f77b]/[0.08] to-[#39f77b]/[0.02] p-8">
+          <div className="rounded-3xl border border-[#39f77b]/20 bg-linear-to-br from-[#39f77b]/8 to-[#39f77b]/2 p-8">
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#39f77b]/15 text-[#39f77b]">
                 <svg
@@ -754,7 +754,7 @@ export default function EVTechnology() {
       <div className="mt-24 overflow-hidden rounded-3xl border border-white/10 bg-[#0b0f16]">
         <div className="grid lg:grid-cols-2">
           {/* Radar visual */}
-          <div className="relative flex min-h-[380px] items-center justify-center overflow-hidden bg-gradient-to-br from-[#0d1713] via-[#0b0f16] to-[#05070b] p-8">
+          <div className="relative flex min-h-95 items-center justify-center overflow-hidden bg-linear-to-br from-[#0d1713] via-[#0b0f16] to-[#05070b] p-8">
             <div className="relative h-64 w-64 sm:h-72 sm:w-72">
               {/* rings */}
               <span className="absolute inset-0 rounded-full border border-[#39f77b]/20" />
@@ -763,7 +763,7 @@ export default function EVTechnology() {
 
               {/* crosshair */}
               <span className="absolute inset-x-0 top-1/2 h-px bg-[#39f77b]/10" />
-              <span className="absolute inset-y-0 start-1/2 w-px bg-[#39f77b]/10" />
+              <span className="absolute inset-y-0 inset-s-1/2 w-px bg-[#39f77b]/10" />
 
               {/* sweep */}
               <span
@@ -808,7 +808,7 @@ export default function EVTechnology() {
               {t.adasList.map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm text-gray-300"
+                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/2 p-4 text-sm text-gray-300"
                 >
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#39f77b]/15 text-[#39f77b]">
                     <CheckIcon className="h-3.5 w-3.5" />

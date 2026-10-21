@@ -178,19 +178,19 @@ export default function ArticleDetailFa({ article }: ArticleDetailFaProps) {
           >
             <div className="pointer-events-none absolute -inset-4 rounded-[2.5rem] bg-emerald-500/10 blur-3xl" />
 
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-950/90 p-7 shadow-2xl sm:p-10">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-slate-900/90 to-slate-950/90 p-7 shadow-2xl sm:p-10">
               {/* علامت نقل قول بزرگ */}
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
-                className="absolute end-6 top-6 h-14 w-14 text-emerald-400/15 sm:h-20 sm:w-20"
+                className="absolute inset-e-6 top-6 h-14 w-14 text-emerald-400/15 sm:h-20 sm:w-20"
                 fill="currentColor"
               >
                 <path d="M9.6 5C6.5 6.3 4 9 4 13v6h6v-6H7c0-2 1.1-3.6 2.9-4.5L9.6 5Zm10 0c-3.1 1.3-5.6 4-5.6 8v6h6v-6h-3c0-2 1.1-3.6 2.9-4.5L19.6 5Z" />
               </svg>
 
               {current && (
-                <div key={current.id || currentIndex} className="comment-slide relative min-h-[140px]">
+                <div key={current.id || currentIndex} className="comment-slide relative min-h-35">
                   <div className=" flex items-center gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-emerald-400/40 bg-emerald-400/10 text-lg font-bold text-emerald-300">
                       {current.user_name ? current.user_name.charAt(0).toUpperCase() : "U"}

@@ -176,7 +176,7 @@ function Checkbox({
       />
       <span
         className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2 border-[#39f77b] text-transparent transition peer-focus-visible:ring-2 peer-focus-visible:ring-[#39f77b]/50 ${
-          checked ? (filled ? "bg-[#39f77b] !text-[#04120a]" : "!text-[#39f77b]") : "text-transparent"
+          checked ? (filled ? "bg-[#39f77b] text-[#04120a]!" : "text-[#39f77b]!") : "text-transparent"
         }`}
       >
         <Tick />
@@ -207,14 +207,14 @@ export default function LoginDesktopFa() {
       className="relative min-h-screen overflow-hidden bg-[#050d12] text-white"
     >
       {/* Grid + glows */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(57,247,123,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(57,247,123,0.045)_1px,transparent_1px)] bg-[size:120px_120px]" />
-      <div className="pointer-events-none absolute -left-40 -top-40 h-[620px] w-[620px] rounded-full bg-[#1fd16f]/20 blur-[140px]" />
-      <div className="pointer-events-none absolute -bottom-52 -right-32 h-[560px] w-[560px] rounded-full bg-[#1fd16f]/15 blur-[150px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(57,247,123,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(57,247,123,0.045)_1px,transparent_1px)] bg-size-[120px_120px]" />
+      <div className="pointer-events-none absolute -left-40 -top-40 h-155 w-155 rounded-full bg-[#1fd16f]/20 blur-[140px]" />
+      <div className="pointer-events-none absolute -bottom-52 -right-32 h-140 w-140 rounded-full bg-[#1fd16f]/15 blur-[150px]" />
 
-      <div className="relative mx-auto flex min-h-screen max-w-[1440px] items-center justify-between gap-12 px-[6%] pb-20 pt-10">
+      <div className="relative mx-auto flex min-h-screen max-w-360 items-center justify-between gap-12 px-[6%] pb-20 pt-10">
         {/* Welcome side */}
-        <div className="hidden max-w-[600px] flex-1 lg:block">
-          <span className="block h-[3px] w-10 rounded-full bg-[#39f77b]" />
+        <div className="hidden max-w-150 flex-1 lg:block">
+          <span className="block h-0.75 w-10 rounded-full bg-[#39f77b]" />
 
           <h1 className="mt-4 text-4xl font-extrabold leading-[1.4] xl:text-[50px]">
             <span className="block">{t.welcomeA}</span>
@@ -230,13 +230,13 @@ export default function LoginDesktopFa() {
           <img
             src={CAR_IMAGE}
             alt=""
-            className="mt-8 w-full max-w-[540px] select-none drop-shadow-[0_30px_40px_rgba(0,0,0,0.5)]"
+            className="mt-8 w-full max-w-135 select-none drop-shadow-[0_30px_40px_rgba(0,0,0,0.5)]"
             draggable={false}
           />
         </div>
 
         {/* Form card */}
-        <div className="w-full max-w-[530px] shrink-0 rounded-[2rem] border border-white/10 bg-[#08151b]/90 p-8 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] backdrop-blur-xl sm:p-9">
+        <div className="w-full max-w-132.5 shrink-0 rounded-4xl border border-white/10 bg-[#08151b]/90 p-8 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] backdrop-blur-xl sm:p-9">
           <h2 className="text-3xl font-extrabold leading-tight">{c.title}</h2>
 
           <p className="mt-3 text-sm font-semibold text-gray-300">
@@ -294,7 +294,7 @@ export default function LoginDesktopFa() {
                 </label>
                 <div className="relative">
                   {isSignup && (
-                    <LockIcon className="pointer-events-none absolute start-5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                    <LockIcon className="pointer-events-none absolute inset-s-5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
                   )}
                   <input
                     type={f.showPass ? "text" : "password"}
@@ -310,7 +310,7 @@ export default function LoginDesktopFa() {
                       type="button"
                       onClick={() => f.setShowPass(!f.showPass)}
                       aria-label={f.showPass ? t.hide : t.show}
-                      className="absolute end-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-[#39f77b]"
+                      className="absolute inset-e-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-[#39f77b]"
                     >
                       <EyeIcon off={f.showPass} className="h-6 w-6" />
                     </button>
@@ -323,7 +323,7 @@ export default function LoginDesktopFa() {
               <div>
                 <label className="mb-2 block text-sm text-gray-300">{t.confirm}</label>
                 <div className="relative">
-                  <LockIcon className="pointer-events-none absolute start-5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                  <LockIcon className="pointer-events-none absolute inset-s-5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
                   <input
                     type={f.showConfirm ? "text" : "password"}
                     required
@@ -383,8 +383,8 @@ export default function LoginDesktopFa() {
             <button
               type="submit"
               disabled={f.loading}
-              className={`flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#10e59a] to-[#39f77b] font-bold text-[#031008] shadow-[0_12px_36px_-12px_rgba(57,247,123,0.7)] transition hover:brightness-105 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70 ${
-                isSignup ? "h-14 text-base" : "mt-2 h-[68px] text-lg"
+              className={`flex w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-[#10e59a] to-[#39f77b] font-bold text-[#031008] shadow-[0_12px_36px_-12px_rgba(57,247,123,0.7)] transition hover:brightness-105 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70 ${
+                isSignup ? "h-14 text-base" : "mt-2 h-17 text-lg"
               }`}
             >
               {f.loading ? <Spinner /> : c.button}

@@ -176,7 +176,7 @@ function Checkbox({
       />
       <span
         className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2 border-[#39f77b] text-transparent transition peer-focus-visible:ring-2 peer-focus-visible:ring-[#39f77b]/50 ${
-          checked ? (filled ? "bg-[#39f77b] !text-[#04120a]" : "!text-[#39f77b]") : "text-transparent"
+          checked ? (filled ? "bg-[#39f77b] text-[#04120a]!" : "!text-[#39f77b]!") : "text-transparent"
         }`}
       >
         <Tick />
@@ -206,10 +206,10 @@ export default function LoginMobileEn() {
   return (
     <div
       dir="ltr"
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#06141a] via-[#04090d] to-[#030609] text-white"
+      className="relative min-h-screen overflow-hidden bg-linear-to-br from-[#06141a] via-[#04090d] to-[#030609] text-white"
     >
       {/* Faint car + grid */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(57,247,123,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(57,247,123,0.04)_1px,transparent_1px)] bg-[size:72px_72px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(57,247,123,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(57,247,123,0.04)_1px,transparent_1px)] bg-size-[72px_72px]" />
       <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#1fd16f]/20 blur-[100px]" />
       <img
         src={CAR_IMAGE}
@@ -380,7 +380,7 @@ export default function LoginMobileEn() {
           <button
             type="submit"
             disabled={f.loading}
-            className="mt-2 flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#10e59a] to-[#39f77b] text-base font-bold text-[#031008] shadow-[0_12px_36px_-12px_rgba(57,247,123,0.7)] transition hover:brightness-105 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70"
+            className="mt-2 flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-[#10e59a] to-[#39f77b] text-base font-bold text-[#031008] shadow-[0_12px_36px_-12px_rgba(57,247,123,0.7)] transition hover:brightness-105 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70"
           >
             {f.loading ? <Spinner /> : c.button}
           </button>

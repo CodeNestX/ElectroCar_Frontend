@@ -114,7 +114,7 @@ function LanguageToggle({
     <div
       dir="ltr"
       role="group"
-      className={`relative grid grid-cols-2 rounded-full border border-white/10 bg-white/[0.03] p-1 ${className}`}
+      className={`relative grid grid-cols-2 rounded-full border border-white/10 bg-white/3 p-1 ${className}`}
     >
       <span
         aria-hidden="true"
@@ -293,7 +293,7 @@ export default function Header() {
 
             {/* ───────── Floating bar ───────── */}
             <div
-              className={`relative flex h-[60px] items-center justify-between gap-3 rounded-2xl border px-3 backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-300 sm:h-[68px] sm:px-4 lg:grid lg:grid-cols-[1fr_auto_1fr] ${
+              className={`relative flex h-15 items-center justify-between gap-3 rounded-2xl border px-3 backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-300 sm:h-17 sm:px-4 lg:grid lg:grid-cols-[1fr_auto_1fr] ${
                 scrolled
                   ? "border-white/10 bg-[#08131d]/90 shadow-[0_14px_40px_-14px_rgba(0,0,0,0.75)]"
                   : "border-white/[0.07] bg-[#08131d]/55"
@@ -302,11 +302,11 @@ export default function Header() {
               {/* Charge line: fills as you scroll down the page */}
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-5 -bottom-px h-[2px] overflow-hidden rounded-full bg-white/[0.04]"
+                className="pointer-events-none absolute inset-x-5 -bottom-px h-0.5 overflow-hidden rounded-full bg-white/4"
               >
                 <span
                   ref={chargeRef}
-                  className="block h-full w-full origin-left bg-gradient-to-r from-[#00c8ff] to-[#39f77b] shadow-[0_0_12px_rgba(57,247,123,0.8)] will-change-transform rtl:origin-right rtl:bg-gradient-to-l"
+                  className="block h-full w-full origin-left bg-linear-to-r from-[#00c8ff] to-[#39f77b] shadow-[0_0_12px_rgba(57,247,123,0.8)] will-change-transform rtl:origin-right rtl:bg-linear-to-l"
                   style={{ transform: "scaleX(0)" }}
                 />
               </span>
@@ -317,7 +317,7 @@ export default function Header() {
                 aria-label="ElectroCar"
                 className="group flex w-fit shrink-0 items-center gap-2.5 justify-self-start sm:gap-3"
               >
-                <span className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-[#00c8ff]/10 to-[#39f77b]/10 transition-colors duration-300 group-hover:border-[#39f77b]/40 sm:h-11 sm:w-11">
+                <span className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-linear-to-br from-[#00c8ff]/10 to-[#39f77b]/10 transition-colors duration-300 group-hover:border-[#39f77b]/40 sm:h-11 sm:w-11">
                   <span className="absolute inset-0 rounded-xl bg-[#39f77b]/25 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
 
                   <svg
@@ -376,7 +376,7 @@ export default function Header() {
                       {/* LED under the current page */}
                       <span
                         aria-hidden="true"
-                        className={`absolute -bottom-1 left-1/2 h-[3px] -translate-x-1/2 rounded-full transition-all duration-300 ${
+                        className={`absolute -bottom-1 left-1/2 h-0.75 -translate-x-1/2 rounded-full transition-all duration-300 ${
                           active
                             ? "w-5 bg-[#39f77b] shadow-[0_0_10px_#39f77b]"
                             : "w-0 bg-white/30 group-hover:w-2.5"
@@ -395,7 +395,7 @@ export default function Header() {
                     language={language}
                     onChange={handleLanguageChange}
                     labels={["FA", "EN"]}
-                    className="w-[84px]"
+                    className="w-21"
                   />
                 </div>
 
@@ -408,10 +408,10 @@ export default function Header() {
                   className={`hidden h-10 w-10 items-center justify-center rounded-full border transition-colors duration-200 sm:flex ${
                     searchOpen
                       ? "border-[#39f77b]/40 bg-[#39f77b]/10 text-[#39f77b]"
-                      : "border-white/10 bg-white/[0.03] text-gray-400 hover:border-[#39f77b]/30 hover:text-white"
+                      : "border-white/10 bg-white/3 text-gray-400 hover:border-[#39f77b]/30 hover:text-white"
                   }`}
                 >
-                  <SearchIcon className="h-[18px] w-[18px]" />
+                  <SearchIcon className="h-4.5 w-4.5" />
                 </button>
 
                 {/* دکمه کاربری داینامیک دسکتاپ */}
@@ -420,15 +420,15 @@ export default function Header() {
                     href=""
                     className="hidden h-10 items-center gap-2 rounded-full border border-[#39f77b]/30 bg-[#39f77b]/10 px-4 text-sm font-bold text-[#39f77b] transition hover:bg-[#39f77b]/20 sm:flex"
                   >
-                    <UserIcon className="h-[18px] w-[18px]" />
+                    <UserIcon className="h-4.5 w-4.5" />
                     <span>{user.first_name || user.name || (isFa ? "پروفایل" : "Profile")}</span>
                   </Link>
                 ) : (
                   <Link
                     href="/login"
-                    className="hidden h-10 items-center gap-2 rounded-full bg-[#39f77b] px-4 text-sm font-bold text-[#031008] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#39f77b] sm:flex"
+                    className="hidden h-10 items-center gap-2 rounded-full bg-[#39f77b] px-4 text-sm font-bold text-[#031008] transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#39f77b] sm:flex"
                   >
-                    <UserIcon className="h-[18px] w-[18px]" />
+                    <UserIcon className="h-4.5 w-4.5" />
                     <span>{isFa ? "ورود" : "Login"}</span>
                   </Link>
                 )}
@@ -449,12 +449,12 @@ export default function Header() {
                   className={`flex h-10 w-10 flex-col items-center justify-center gap-1 rounded-xl border transition-colors duration-200 lg:hidden ${
                     open
                       ? "border-[#39f77b]/40 bg-[#39f77b]/10 text-[#39f77b]"
-                      : "border-white/10 bg-white/[0.03] text-gray-300 hover:border-[#39f77b]/30 hover:text-[#39f77b]"
+                      : "border-white/10 bg-white/3 text-gray-300 hover:border-[#39f77b]/30 hover:text-[#39f77b]"
                   }`}
                 >
                   <span
                     className={`block h-0.5 w-5 rounded-full bg-current transition-transform duration-300 motion-reduce:transition-none ${
-                      open ? "translate-y-[6px] rotate-45" : ""
+                      open ? "translate-y-1.5 rotate-45" : ""
                     }`}
                   />
                   <span
@@ -464,7 +464,7 @@ export default function Header() {
                   />
                   <span
                     className={`block h-0.5 w-5 rounded-full bg-current transition-transform duration-300 motion-reduce:transition-none ${
-                      open ? "-translate-y-[6px] -rotate-45" : ""
+                      open ? "-translate-y-1.5 -rotate-45" : ""
                     }`}
                   />
                 </button>
@@ -484,7 +484,7 @@ export default function Header() {
                   event.preventDefault();
                   handleSearch();
                 }}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-1.5 transition-colors focus-within:border-[#39f77b]/40"
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/3 p-1.5 transition-colors focus-within:border-[#39f77b]/40"
               >
                 <SearchIcon className="ms-2.5 h-5 w-5 shrink-0 text-[#39f77b]" />
 
@@ -503,7 +503,7 @@ export default function Header() {
                 <button
                   type="submit"
                   disabled={!query.trim()}
-                  className="shrink-0 rounded-lg bg-[#39f77b] px-5 py-2.5 text-sm font-bold text-[#031008] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#39f77b] disabled:cursor-not-allowed disabled:opacity-40"
+                  className="shrink-0 rounded-lg bg-[#39f77b] px-5 py-2.5 text-sm font-bold text-[#031008] transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#39f77b] disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   {isFa ? "جستجو" : "Search"}
                 </button>
@@ -527,7 +527,7 @@ export default function Header() {
                   <Link
                     key={term}
                     href={`/search?q=${encodeURIComponent(term)}`}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-gray-300 transition hover:border-[#39f77b]/40 hover:text-[#39f77b]"
+                    className="rounded-full border border-white/10 bg-white/3 px-3 py-1 text-xs text-gray-300 transition hover:border-[#39f77b]/40 hover:text-[#39f77b]"
                   >
                     {term}
                   </Link>
@@ -551,7 +551,7 @@ export default function Header() {
                     event.preventDefault();
                     handleSearch();
                   }}
-                  className="flex items-center rounded-xl border border-white/10 bg-white/[0.03] p-1 transition-colors focus-within:border-[#39f77b]/40"
+                  className="flex items-center rounded-xl border border-white/10 bg-white/3 p-1 transition-colors focus-within:border-[#39f77b]/40"
                 >
                   <input
                     value={query}
@@ -583,7 +583,7 @@ export default function Header() {
                     href="/profile"
                     className="flex items-center justify-center gap-2 rounded-xl border border-[#39f77b]/30 bg-[#39f77b]/10 py-3 text-sm font-bold text-[#39f77b]"
                   >
-                    <UserIcon className="h-[18px] w-[18px]" />
+                    <UserIcon className="h-4.5 w-4.5" />
                     {user.first_name || user.name || (isFa ? "مشاهده پروفایل" : "View Profile")}
                   </Link>
                 ) : (
@@ -591,7 +591,7 @@ export default function Header() {
                     href="/login"
                     className="flex items-center justify-center gap-2 rounded-xl bg-[#39f77b] py-3 text-sm font-bold text-[#031008] transition hover:brightness-110"
                   >
-                    <UserIcon className="h-[18px] w-[18px]" />
+                    <UserIcon className="h-4.5 w-4.5" />
                     {isFa ? "ورود / ثبت‌نام" : "Login / Register"}
                   </Link>
                 )}
@@ -611,7 +611,7 @@ export default function Header() {
                         aria-current={active ? "page" : undefined}
                         className={`group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-200 ${
                           active
-                            ? "bg-[#39f77b]/[0.1] text-[#39f77b]"
+                            ? "bg-[#39f77b]/10 text-[#39f77b]"
                             : "text-gray-300 hover:bg-white/5 hover:text-white"
                         }`}
                       >

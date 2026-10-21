@@ -157,7 +157,7 @@ export default function AboutContent() {
             {/* Visual */}
             <div
               dir="ltr"
-              className="relative min-h-[400px] overflow-hidden rounded-3xl border border-white/10 bg-[#0b0f16]"
+              className="relative min-h-100 overflow-hidden rounded-3xl border border-white/10 bg-[#0b0f16]"
             >
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(57,247,123,0.13),transparent_50%)]" />
 

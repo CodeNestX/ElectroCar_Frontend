@@ -84,7 +84,7 @@ export default function KnowledgeSection() {
       <div className="site-container">
         <div
           className={`overflow-hidden rounded-3xl border border-[#39f77b]/10 from-[#0b1c27] to-[#08121b] ${
-            isFa ? "bg-gradient-to-l" : "bg-gradient-to-r"
+            isFa ? "bg-linear-to-l" : "bg-linear-to-r"
           }`}
         >
           <div className="grid md:grid-cols-3">

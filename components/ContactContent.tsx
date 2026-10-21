@@ -68,7 +68,7 @@ function SocialIconRow({ className = "" }: { className?: string }) {
           rel="noopener noreferrer"
           aria-label={item.label}
           title={item.label}
-          className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-gray-400 transition duration-200 hover:-translate-y-0.5 hover:border-[#39f77b]/50 hover:bg-[#39f77b]/10 hover:text-[#39f77b] hover:shadow-[0_8px_24px_-8px_rgba(57,247,123,0.5)]"
+          className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/3 text-gray-400 transition duration-200 hover:-translate-y-0.5 hover:border-[#39f77b]/50 hover:bg-[#39f77b]/10 hover:text-[#39f77b] hover:shadow-[0_8px_24px_-8px_rgba(57,247,123,0.5)]"
         >
           <SocialIcon name={item.key} />
         </a>
@@ -330,7 +330,7 @@ export default function ContactContent() {
 
             {/* فرم */}
             <div className="rounded-3xl border border-white/10 bg-[#091521] p-6 sm:p-8">
-              <div className="mb-7">
+              <div className="mb-7 text-center">
                 <p className="text-sm font-semibold text-[#39f77b]">Send Message</p>
                 <h2 className="mt-2 text-2xl font-bold">{t.formTitle}</h2>
               </div>
