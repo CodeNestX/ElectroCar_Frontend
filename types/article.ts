@@ -14,4 +14,5 @@ export interface Article {
   category : string;
   reading_time_minutes : number;
   created_at:string;
+  view_count :number
 }

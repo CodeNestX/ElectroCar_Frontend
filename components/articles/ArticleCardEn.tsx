@@ -1,7 +1,8 @@
 import { Article } from "@/types/article";
 
 interface ArticleCardEnProps {
-  article: Article;
+  // view_count comes from the backend (the number of recorded views of the article)
+  article: Article & { view_count?: number | string | null };
 }
 
 export default function ArticleCardEn({ article }: ArticleCardEnProps) {
@@ -13,6 +14,9 @@ export default function ArticleCardEn({ article }: ArticleCardEnProps) {
         day: "numeric",
       })
     : "";
+
+  const viewCount = Number(article.view_count);
+  const hasViews = article.view_count != null && Number.isFinite(viewCount);
 
   return (
     <article dir="ltr" className="ev-card group overflow-hidden rounded-2xl text-left">
@@ -30,10 +34,23 @@ export default function ArticleCardEn({ article }: ArticleCardEnProps) {
 
       {/* Content */}
       <div className="p-5">
-        <div className="mb-3 flex items-center gap-2 text-[11px] text-gray-500">
+        <div className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-gray-500">
           <span>{formattedDate}</span>
           <span>•</span>
           <span>{article.reading_time_minutes} min read</span>
+
+          {hasViews && (
+            <>
+              <span>•</span>
+              <span className="inline-flex items-center gap-1">
+                <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
+              <circle cx="12" cy="12" r="2.8" />
+            </svg>
+                {viewCount.toLocaleString("en-US")} {viewCount === 1 ? "view" : "views"}
+              </span>
+            </>
+          )}
         </div>
 
         <h2 className="line-clamp-2 text-base font-bold leading-7 text-white transition group-hover:text-[#39f77b]">

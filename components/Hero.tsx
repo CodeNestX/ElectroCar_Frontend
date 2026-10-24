@@ -57,15 +57,11 @@ const slides = [
 const ui = {
   fa: {
     welcome: "به دنیای خودروهای برقی خوش آمدید!",
-    news: "مشاهده آخرین اخبار ←",
-    cars: "بررسی خودروها",
     slide: "اسلاید",
     tags: ["خودروهای برقی", "هوشمند", "سبز"],
   },
   en: {
     welcome: "Welcome to the world of electric cars!",
-    news: "View latest news →",
-    cars: "Explore cars",
     slide: "Slide",
     tags: ["Electric cars", "Smart", "Green"],
   },
@@ -128,22 +124,6 @@ export default function Hero() {
           <p className="mt-6 max-w-xl text-base leading-8 text-gray-300 md:text-lg">
             {content.description}
           </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="/news"
-              className="rounded-full bg-[#39f77b] px-7 py-3.5 text-sm font-bold text-[#06100a] shadow-[0_0_35px_rgba(57,247,123,0.2)] transition hover:scale-[1.03] hover:bg-[#5cff93]"
-            >
-              {t.news}
-            </a>
-
-            <a
-              href="/cars"
-              className="rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-[#39f77b]/50 hover:text-[#39f77b]"
-            >
-              {t.cars}
-            </a>
-          </div>
 
           {/* Slider controls */}
           <div className="mt-10 flex items-center gap-4">
