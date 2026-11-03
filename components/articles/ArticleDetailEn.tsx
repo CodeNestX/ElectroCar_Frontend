@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   getArticleBlocksBySlug,
   getArticleComments,
@@ -13,11 +13,109 @@ interface ArticleDetailEnProps {
   article: Article; 
 }
 
+type CommentDialogState = { type: "success" | "error"; message: string } | null;
+
+// پنجره اعلان هماهنگ با تم سایت (جایگزین alert مرورگر) — فقط ظاهر، بدون ارتباط با بک‌اند
+function CommentDialog({
+  dialog,
+  onClose,
+}: {
+  dialog: CommentDialogState;
+  onClose: () => void;
+}) {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!dialog) return;
+
+    buttonRef.current?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [dialog, onClose]);
+
+  if (!dialog) return null;
+
+  const ok = dialog.type === "success";
+
+  return (
+    <div
+      dir="ltr"
+      className="fixed inset-0 z-200 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="comment-dialog-title"
+        onClick={(e) => e.stopPropagation()}
+        className="comment-dialog relative w-full max-w-sm overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-slate-900 to-slate-950 p-7 text-center shadow-2xl"
+      >
+        <div
+          className={`pointer-events-none absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full blur-3xl ${
+            ok ? "bg-emerald-500/20" : "bg-red-500/20"
+          }`}
+        />
+
+        <div
+          className={`relative mx-auto flex h-16 w-16 items-center justify-center rounded-full border ${
+            ok
+              ? "border-emerald-400/40 bg-emerald-400/10 text-emerald-300"
+              : "border-red-400/40 bg-red-400/10 text-red-300"
+          }`}
+        >
+          {ok ? (
+            <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="m5 12.5 4.5 4.5L19 7.5" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 7v6M12 17h.01" />
+            </svg>
+          )}
+        </div>
+
+        <h4 id="comment-dialog-title" className="relative mt-5 text-lg font-bold text-white">
+          {ok ? "Comment submitted" : "Could not submit comment"}
+        </h4>
+
+        <p className="relative mt-3 text-sm leading-7 text-slate-400">{dialog.message}</p>
+
+        <button
+          ref={buttonRef}
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className={`relative mt-7 w-full rounded-2xl px-6 py-3 text-sm font-bold transition-all duration-200 active:scale-95 ${
+            ok
+              ? "bg-emerald-500 text-slate-950 hover:bg-emerald-400 hover:shadow-lg hover:shadow-emerald-500/20"
+              : "bg-slate-800 text-white hover:bg-slate-700"
+          }`}
+        >
+          Got it
+        </button>
+      </div>
+
+      <style>{`
+        .comment-dialog { animation: commentDialogIn .25s ease both; }
+        @keyframes commentDialogIn { from { opacity: 0; transform: translateY(12px) scale(.97); } to { opacity: 1; transform: none; } }
+        @media (prefers-reduced-motion: reduce) { .comment-dialog { animation: none; } }
+      `}</style>
+    </div>
+  );
+}
+
 export default function ArticleDetailEn({ article }: ArticleDetailEnProps) {
   const [blocks, setBlocks] = useState<any[]>([]);
   const [comments, setComments] = useState<any[]>([]);
   const [newComment, setNewComment] = useState("");
   const [isSubmittingComment, setIsSubmittingComment] = useState(false);
+  const [dialog, setDialog] = useState<CommentDialogState>(null);
+  const closeDialog = useCallback(() => setDialog(null), []);
 
   useEffect(() => {
     // جلوگیری از کرش کردن صفحه قبل از دریافت کامل دیتا
@@ -46,10 +144,10 @@ export default function ArticleDetailEn({ article }: ArticleDetailEnProps) {
       setIsSubmittingComment(true);
       await createComment(article.id, newComment);
       setNewComment("");
-      alert("Your comment was submitted successfully and will be displayed after approval.");
+      setDialog({ type: "success", message: "Your comment was submitted successfully and will be displayed after approval." });
     } catch (error: any) {
       console.error("Error submitting comment:", error);
-      alert(error.response?.data?.message || "Please log in to submit a comment.");
+      setDialog({ type: "error", message: error.response?.data?.message || "Please log in to submit a comment." });
     } finally {
       setIsSubmittingComment(false);
     }
@@ -144,6 +242,8 @@ export default function ArticleDetailEn({ article }: ArticleDetailEnProps) {
           )}
         </div>
       </section>
+
+      <CommentDialog dialog={dialog} onClose={closeDialog} />
     </article>
   );
 }
