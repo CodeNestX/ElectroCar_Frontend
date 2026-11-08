@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import ContactContent from "@/components/ContactContent";
 
 export const metadata = {
@@ -9,7 +10,9 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <main className="bg-[#050b11] pt-10 sm:pt-15">
-      <ContactContent />;
+      <Suspense fallback={null}>
+        <ContactContent />
+      </Suspense>
     </main>
   );
 }

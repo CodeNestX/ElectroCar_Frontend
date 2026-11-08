@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useEffect, useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { getUserInfo, sendMessage } from "@/api/services"; // اتصال به بک‌اند
 
@@ -200,6 +201,9 @@ const inputClass =
 export default function ContactContent() {
   const { language } = useLanguage();
   const t = ui[language];
+  const searchParams = useSearchParams();
+  const articleIdParam = searchParams.get("article_id");
+  const sourceTypeParam = searchParams.get("source_type") || (articleIdParam ? "article" : "website");
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -213,14 +217,17 @@ export default function ContactContent() {
     const fetchUserData = async () => {
       try {
         const res = await getUserInfo();
-        console.log(res);
-        if (res && res.data) {
-          setName(`${res.data.data.first_name} ${res.data.data.last_name}`)
-          if (res.data.email != null) {
-            setEmail(res.data.data.email)
+        if (res && res.data?.data) {
+          const userData = res.data.data;
+          const fullName = `${userData.first_name || ""} ${userData.last_name || ""}`.trim();
+          if (fullName && fullName !== "کاربر جدید") {
+            setName(fullName);
           }
-          if (res.data.mobile == null) {
-            setPhone(res.data.data.mobile)
+          if (userData.email) {
+            setEmail(userData.email);
+          }
+          if (userData.mobile) {
+            setPhone(userData.mobile);
           }
         }
       } catch (error) {
@@ -251,8 +258,16 @@ export default function ContactContent() {
     setSending(true);
 
     try {
-      // استفاده از سرویس متصل به Axios
-      await sendMessage(name, subject, message, mail, mobile);
+      // استفاده از سرویس متصل به Axios با انتقال مبدأ و شناسه مقاله (در صورت وجود)
+      await sendMessage(
+        name,
+        subject,
+        message,
+        mail,
+        mobile,
+        sourceTypeParam,
+        articleIdParam ? Number(articleIdParam) : null
+      );
 
       setFeedback({ type: "ok", text: t.success });
       setName("");

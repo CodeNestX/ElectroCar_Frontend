@@ -5,7 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/login"],
     },
-    sitemap: "https://electrocar.ir/sitemap.xml",
+    sitemap: "https://voltinou.ir/sitemap.xml",
   };
 }

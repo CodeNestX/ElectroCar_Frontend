@@ -2,6 +2,8 @@ import { getArticleBySlug } from '@/api/services';
 import ArticleView from '@/components/articles/ArticleView';
 import { notFound } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 interface ArticlePageProps {
   params: Promise<{
     slug: string;

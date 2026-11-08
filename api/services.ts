@@ -14,8 +14,13 @@ export const getCategoryByLanguage = async (language: string = "fa") => {
 // ================================
 
 // دریافت جدیدترین مقالات (مخصوص صفحه اصلی)
-export const getLatestArticles = async () => {
-  return await apiClient.get(`/articles/last`);
+export const getLatestArticles = async (language: string = "fa") => {
+  return await apiClient.get(`/articles/last?lang=${language}`);
+};
+
+// دریافت تمام مقالات برای نقشه سایت
+export const getArticlesSitemap = async () => {
+  return await apiClient.get(`/articles/sitemap`);
 };
 
 // دریافت تمام مقالات یک زبان خاص
@@ -90,14 +95,23 @@ export const getUserInfo = async () => {
 // ================================
 
 // ارسال پیام تماس با ما
-export const sendMessage = async (name: string, subject: string, message: string, email?: string, mobile?: string) => {
+export const sendMessage = async (
+  name: string,
+  subject: string,
+  message: string,
+  email?: string,
+  mobile?: string,
+  source_type: string = "website",
+  source_id?: number | null
+) => {
   const data = {
     name,
     subject,
     message,
     email: email || undefined,
     mobile: mobile || undefined,
-    source_type: "website"
+    source_type,
+    source_id: source_id || undefined,
   };
   return await apiClient.post(`/contact`, data);
 };

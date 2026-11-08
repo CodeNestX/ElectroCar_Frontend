@@ -122,6 +122,27 @@ export default function ArticleDetailFa({ article }: ArticleDetailFaProps) {
   // استیت‌های اسلایدر کامنت‌ها
   const [currentIndex, setCurrentIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const contentSectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!contentSectionRef.current || !article?.id) return;
+    const links = contentSectionRef.current.querySelectorAll<HTMLAnchorElement>('a[href*="/contact"]');
+    links.forEach((link) => {
+      const rawHref = link.getAttribute("href") || "";
+      try {
+        const url = new URL(rawHref, window.location.origin);
+        if (url.pathname === "/contact") {
+          if (!url.searchParams.has("article_id")) {
+            url.searchParams.set("article_id", String(article.id));
+          }
+          if (!url.searchParams.has("source_type")) {
+            url.searchParams.set("source_type", "article");
+          }
+          link.setAttribute("href", `${url.pathname}${url.search}`);
+        }
+      } catch {}
+    });
+  }, [article?.id, blocks]);
 
   useEffect(() => {
     if (!article?.id || !article?.slug) return;
@@ -192,7 +213,7 @@ export default function ArticleDetailFa({ article }: ArticleDetailFaProps) {
       </header>
 
       {/* محتوای مقاله (رندر بلوک‌ها) */}
-      <section className="prose prose-lg max-w-none mb-16 mx-auto text-right">
+      <section ref={contentSectionRef} className="prose prose-lg max-w-none mb-16 mx-auto text-right">
         {blocks.length > 0 ? (
           blocks.map((block) => {
             const isAparat = block.media_url?.includes('aparat.com');
@@ -227,6 +248,26 @@ export default function ArticleDetailFa({ article }: ArticleDetailFaProps) {
           <p>{article.excerpt}</p>
         )}
       </section>
+
+      {/* کادر جمع‌وجور درخواست مشاوره و تماس درباره مقاله */}
+      <div className="my-10 rounded-2xl border border-emerald-500/20 bg-linear-to-l from-emerald-950/20 via-slate-900/80 to-slate-900/80 p-5 backdrop-blur-sm sm:flex sm:items-center sm:justify-between gap-4">
+        <div className="mb-3 sm:mb-0">
+          <h4 className="text-base font-bold text-white flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-emerald-400" />
+            درخواست مشاوره یا اطلاعات بیشتر درباره این موضوع
+          </h4>
+          <p className="text-xs text-slate-400 mt-1">
+            برای ارتباط با کارشناسان و دریافت راهنمایی تخصصی درباره این موضوع، با ما در تماس باشید.
+          </p>
+        </div>
+        <a
+          href={`/contact?article_id=${article.id}&source_type=article`}
+          className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-emerald-500 px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-emerald-400 active:scale-95 shadow-md shadow-emerald-500/20"
+        >
+          تماس با کارشناسان
+          <span>←</span>
+        </a>
+      </div>
 
       {/* بخش دیدگاه‌ها و اسلایدر */}
       <section className="mt-16 border-t border-slate-800 pt-10 text-right">

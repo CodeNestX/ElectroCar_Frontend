@@ -116,6 +116,27 @@ export default function ArticleDetailEn({ article }: ArticleDetailEnProps) {
   const [isSubmittingComment, setIsSubmittingComment] = useState(false);
   const [dialog, setDialog] = useState<CommentDialogState>(null);
   const closeDialog = useCallback(() => setDialog(null), []);
+  const contentSectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!contentSectionRef.current || !article?.id) return;
+    const links = contentSectionRef.current.querySelectorAll<HTMLAnchorElement>('a[href*="/contact"]');
+    links.forEach((link) => {
+      const rawHref = link.getAttribute("href") || "";
+      try {
+        const url = new URL(rawHref, window.location.origin);
+        if (url.pathname === "/contact") {
+          if (!url.searchParams.has("article_id")) {
+            url.searchParams.set("article_id", String(article.id));
+          }
+          if (!url.searchParams.has("source_type")) {
+            url.searchParams.set("source_type", "article");
+          }
+          link.setAttribute("href", `${url.pathname}${url.search}`);
+        }
+      } catch {}
+    });
+  }, [article?.id, blocks]);
 
   useEffect(() => {
     // جلوگیری از کرش کردن صفحه قبل از دریافت کامل دیتا
@@ -170,7 +191,7 @@ export default function ArticleDetailEn({ article }: ArticleDetailEnProps) {
       </header>
 
       {/* Article Blocks */}
-      <section className="prose prose-lg max-w-none mb-16 mx-auto prose-invert">
+      <section ref={contentSectionRef} className="prose prose-lg max-w-none mb-16 mx-auto prose-invert">
         {blocks.length > 0 ? (
           blocks.map((block) => {
             // بررسی تعلق لینک به سایت آپارات
@@ -208,6 +229,26 @@ export default function ArticleDetailEn({ article }: ArticleDetailEnProps) {
           <p className="text-gray-400">{article.excerpt}</p>
         )}
       </section>
+
+      {/* Consultation & Contact CTA Card */}
+      <div className="my-10 rounded-2xl border border-emerald-500/20 bg-linear-to-r from-emerald-950/20 via-slate-900/80 to-slate-900/80 p-5 backdrop-blur-sm sm:flex sm:items-center sm:justify-between gap-4">
+        <div className="mb-3 sm:mb-0">
+          <h4 className="text-base font-bold text-white flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-emerald-400" />
+            Request Consultation or Inquire About This Topic
+          </h4>
+          <p className="text-xs text-slate-400 mt-1">
+            Need more information or professional guidance regarding this article or vehicle? Contact our specialists.
+          </p>
+        </div>
+        <a
+          href={`/contact?article_id=${article.id}&source_type=article`}
+          className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-emerald-500 px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-emerald-400 active:scale-95 shadow-md shadow-emerald-500/20"
+        >
+          Contact Us
+          <span>→</span>
+        </a>
+      </div>
 
       {/* Comments Section */}
       <section className="border-t border-gray-800 pt-10 mt-10">

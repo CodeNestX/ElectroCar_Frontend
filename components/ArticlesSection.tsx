@@ -36,15 +36,8 @@ export default function ArticlesSection() {
       try {
         setLoading(true);
 
-        const res = await getLatestArticles();
-        console.log(res);
-        
-        // بک‌اند در ریسپانس کلید data را برمی‌گرداند
-        let fetchedData = res.data?.data || [];
-        
-        // چون بک‌اند در /articles/last فیلتر زبان ندارد، اینجا مقالات را بر اساس زبان فعلی کاربر فیلتر می‌کنیم
-        fetchedData = fetchedData.filter((item: any) => item.language === language);
-        
+        const res = await getLatestArticles(language);
+        const fetchedData = res.data?.data || [];
         setArticles(fetchedData);
       } catch (error) {
         console.error("Failed to fetch latest articles:", error);

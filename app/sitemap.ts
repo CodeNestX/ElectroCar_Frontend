@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { getLatestArticles } from "@/api/services"; // یا هر تابعی که همه مقالات را برمی‌گرداند
+import { getArticlesSitemap } from "@/api/services";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://electrocar.ir";
+  const baseUrl = "https://voltinou.ir";
 
-  // ۱. تعریف صفحات ثابت سایت (Static Routes)
+  // ۱. تعریف صفحات ثابت و معتبر سایت (Static Routes)
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -13,34 +13,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}/news`,
+      url: `${baseUrl}/articles`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/articles`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/cars`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/compare`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/charging`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
     },
     {
       url: `${baseUrl}/technology`,
@@ -62,28 +38,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // ۲. دریافت مقالات از بک‌اند به صورت داینامیک
+  // ۲. دریافت تمام مقالات منتشر شده از اندپوینت اختصاصی سایت‌مپ
   let dynamicArticles: MetadataRoute.Sitemap = [];
   
   try {
-    // در اینجا از تابعی استفاده کنید که لیست مقالات را از بک‌اند می‌آورد
-    // اگر تابعی مثل getAllArticles دارید، بهتر است از آن استفاده کنید
-    const res = await getLatestArticles(); 
+    const res = await getArticlesSitemap(); 
     const articles = res.data?.data || [];
 
     // تبدیل مقالات به فرمت استاندارد نقشه سایت
     dynamicArticles = articles.map((article: any) => ({
       url: `${baseUrl}/articles/${article.slug}`,
-      // اگر در دیتابیس تاریخ آپدیت (updated_at) دارید، آن را در اولویت قرار دهید
       lastModified: new Date(article.updated_at || article.created_at || new Date()),
       changeFrequency: "weekly",
-      priority: 0.8, // اولویت مقالات معمولاً 0.7 یا 0.8 در نظر گرفته می‌شود
+      priority: 0.8,
     }));
   } catch (error) {
     console.error("خطا در دریافت مقالات برای تولید نقشه سایت:", error);
-    // در صورت خطا، سایت کرش نمی‌کند و فقط صفحات استاتیک در سایت‌مپ قرار می‌گیرند
   }
 
-  // ۳. ترکیب صفحات ثابت و مقالات داینامیک و ارسال به عنوان خروجی نهایی
+  // ۳. ترکیب صفحات ثابت و مقالات داینامیک
   return [...staticRoutes, ...dynamicArticles];
 }
