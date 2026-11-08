@@ -190,44 +190,51 @@ export default function ArticleDetailEn({ article }: ArticleDetailEnProps) {
         )}
       </header>
 
+      {/* Summary / Lead */}
+      {article.excerpt && (
+        <div className="mb-10 rounded-2xl border-l-4 border-[#39f77b] bg-[#0b1722]/80 p-5 md:p-6 text-gray-200 leading-relaxed text-base md:text-lg shadow-sm border border-white/5">
+          <p className="font-bold text-[#39f77b] text-sm mb-2 flex items-center gap-2">
+            <span className="inline-block w-2 h-2 rounded-full bg-[#39f77b]"></span>
+            Summary
+          </p>
+          <p className="leading-8 text-gray-200">{article.excerpt}</p>
+        </div>
+      )}
+
       {/* Article Blocks */}
       <section ref={contentSectionRef} className="prose prose-lg max-w-none mb-16 mx-auto prose-invert">
-        {blocks.length > 0 ? (
-          blocks.map((block) => {
-            // بررسی تعلق لینک به سایت آپارات
-            const isAparat = block.media_url?.includes('aparat.com');
+        {blocks.map((block) => {
+          // بررسی تعلق لینک به سایت آپارات
+          const isAparat = block.media_url?.includes('aparat.com');
 
-            return (
-              <div key={block.id} className="my-6 text-gray-300">
-                {block.text_content && (
-                  <div dangerouslySetInnerHTML={{ __html: block.text_content }} />
-                )}
-                
-                {block.media_url && block.media_type === 'image' && (
-                  <img src={block.media_url} alt={block.alt_text} className="w-full rounded-lg my-4" />
-                )}
-                
-                {block.media_url && block.media_type === 'video' && (
-                  isAparat ? (
-                    // نمایش پخش‌کننده آپارات به صورت رسپانسیو (نسبت 16:9)
-                    <div className="relative w-full rounded-xl overflow-hidden my-6" style={{ paddingTop: '56.25%' }}>
-                      <iframe
-                        src={block.media_url}
-                        allowFullScreen
-                        className="absolute top-0 left-0 w-full h-full border-0"
-                      ></iframe>
-                    </div>
-                  ) : (
-                    // نمایش فایل‌های ویدئویی معمولی (مثل mp4)
-                    <video src={block.media_url} controls className="w-full rounded-xl my-6" />
-                  )
-                )}
-              </div>
-            );
-          })
-        ) : (
-          <p className="text-gray-400">{article.excerpt}</p>
-        )}
+          return (
+            <div key={block.id} className="my-6 text-gray-300">
+              {block.text_content && (
+                <div dangerouslySetInnerHTML={{ __html: block.text_content }} />
+              )}
+              
+              {block.media_url && block.media_type === 'image' && (
+                <img src={block.media_url} alt={block.alt_text} className="w-full rounded-lg my-4" />
+              )}
+              
+              {block.media_url && block.media_type === 'video' && (
+                isAparat ? (
+                  // نمایش پخش‌کننده آپارات به صورت رسپانسیو (نسبت 16:9)
+                  <div className="relative w-full rounded-xl overflow-hidden my-6" style={{ paddingTop: '56.25%' }}>
+                    <iframe
+                      src={block.media_url}
+                      allowFullScreen
+                      className="absolute top-0 left-0 w-full h-full border-0"
+                    ></iframe>
+                  </div>
+                ) : (
+                  // نمایش فایل‌های ویدئویی معمولی (مثل mp4)
+                  <video src={block.media_url} controls className="w-full rounded-xl my-6" />
+                )
+              )}
+            </div>
+          );
+        })}
       </section>
 
       {/* Consultation & Contact CTA Card */}

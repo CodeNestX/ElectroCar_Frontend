@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const slides = [
@@ -86,6 +86,14 @@ export default function Hero() {
       prev === 0 ? slides.length - 1 : prev - 1
     );
   };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="relative min-h-svh overflow-hidden">
