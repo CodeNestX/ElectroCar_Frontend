@@ -1,14 +1,6 @@
 import type { Metadata } from "next";
-import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
-
-const vazirmatn = Vazirmatn({
-  // "latin" is needed so English text uses the same font as Persian text
-  subsets: ["arabic", "latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-vazirmatn",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -50,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
-      <body className={vazirmatn.variable}>
+      <body className="antialiased">
         <LanguageProvider>
           {children}
         </LanguageProvider>
