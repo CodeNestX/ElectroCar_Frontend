@@ -314,7 +314,7 @@ export default function Header() {
               {/* Logo */}
               <Link
                 href="/"
-                aria-label="ElectroCar"
+                aria-label="Voltinou"
                 className="group flex w-fit shrink-0 items-center gap-2.5 justify-self-start sm:gap-3"
               >
                 <span className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-linear-to-br from-[#00c8ff]/10 to-[#39f77b]/10 transition-colors duration-300 group-hover:border-[#39f77b]/40 sm:h-11 sm:w-11">
@@ -347,8 +347,8 @@ export default function Header() {
                 </span>
 
                 <span className="text-xl font-extrabold tracking-tight sm:text-2xl">
-                  <span className="text-white">Electro</span>
-                  <span className="text-[#39f77b]">Car</span>
+                  <span className="text-[#39f77b]">Volt</span>
+                  <span className="text-white">inou</span>
                 </span>
               </Link>
 
@@ -642,7 +642,7 @@ export default function Header() {
                 </nav>
 
                 <p className="border-t border-white/5 pt-3 text-center text-xs text-white/30">
-                  ElectroCar · {isFa ? "دنیای خودروهای برقی" : "The world of electric cars"}
+                  Voltinou · {isFa ? "دنیای خودروهای برقی" : "The world of electric cars"}
                 </p>
               </div>
             </div>

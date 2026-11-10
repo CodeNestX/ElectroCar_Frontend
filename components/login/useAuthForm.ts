@@ -18,7 +18,7 @@ import {
  * (desktop/mobile x fa/en) only render. To change how the site talks to the
  * backend, edit lib/auth.ts (requests) or this file (flow).
  *
- * Flows (they follow ElectroCar_Backend):
+ * Flows (they follow Voltinou_Backend):
  *   login   -> POST /users/login
  *   signup  -> POST /otp/send (register) -> code screen -> POST /otp/verify
  *              (creates the account + sets the cookie) -> PUT /users/me (name + password)

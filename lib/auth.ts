@@ -1,4 +1,4 @@
-// Talks to ElectroCar_Backend (Express, port 46329).
+// Talks to Voltinou_Backend (Express, port 46329).
 //
 // Endpoints used (routes/router.js in the backend):
 //   POST /users/login   { identifier, password }                  -> sets the httpOnly "user_token" cookie

@@ -67,7 +67,7 @@ export default function ArticlesPageEn() {
     <main dir={dir} className="mx-auto min-h-[70vh] max-w-7xl px-4 py-12 text-left sm:px-6 lg:px-8">
       <div className="mb-10 text-center">
         <span className="mb-3 inline-block text-sm font-semibold text-green-400">
-          ElectroCar Knowledge Base
+          Voltinou Knowledge Base
         </span>
         <h1 className="text-3xl font-extrabold sm:text-4xl">
           {language === "fa" ? "مقالات خودروهای برقی" : "Electric Car Articles"}

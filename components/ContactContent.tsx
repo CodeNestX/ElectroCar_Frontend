@@ -83,7 +83,7 @@ const contactItems = {
     {
       icon: "✉",
       title: "ایمیل",
-      value: "info@electrocar.ir",
+      value: "info@voltinou.ir",
       description: "برای ارسال پیشنهاد و درخواست همکاری",
     },
     {
@@ -97,7 +97,7 @@ const contactItems = {
     {
       icon: "✉",
       title: "Email",
-      value: "info@electrocar.ir",
+      value: "info@voltinou.ir",
       description: "For sending suggestions and collaboration requests",
     },
     {
@@ -112,21 +112,21 @@ const contactItems = {
 const faq = {
   fa: [
     {
-      q: "ElectroCar درباره چه موضوعاتی محتوا منتشر می‌کند؟",
+      q: "Voltinou درباره چه موضوعاتی محتوا منتشر می‌کند؟",
       a: "اخبار، مقالات آموزشی، خودروهای برقی، فناوری‌های مرتبط و راهنمای شارژ.",
     },
     {
-      q: "آیا امکان همکاری با ElectroCar وجود دارد؟",
+      q: "آیا امکان همکاری با Voltinou وجود دارد؟",
       a: "بله. برای همکاری، پیشنهاد محتوا یا سایر درخواست‌ها می‌توانید از فرم تماس استفاده کنید.",
     },
   ],
   en: [
     {
-      q: "What topics does ElectroCar publish content about?",
+      q: "What topics does Voltinou publish content about?",
       a: "News, educational articles, electric cars, related technologies, and charging guides.",
     },
     {
-      q: "Is it possible to collaborate with ElectroCar?",
+      q: "Is it possible to collaborate with Voltinou?",
       a: "Yes. For collaboration, content suggestions, or other requests, you can use the contact form.",
     },
   ],
@@ -134,12 +134,12 @@ const faq = {
 
 const ui = {
   fa: {
-    badge: "ارتباط با ElectroCar",
+    badge: "ارتباط با Voltinou",
     titleA: "با ما در",
     highlight: "ارتباط باشید",
-    desc: "پیشنهاد، انتقاد، درخواست همکاری یا ایده‌ای برای بهتر شدن ElectroCar دارید؟ پیام خود را برای ما ارسال کنید.",
+    desc: "پیشنهاد، انتقاد، درخواست همکاری یا ایده‌ای برای بهتر شدن Voltinou دارید؟ پیام خود را برای ما ارسال کنید.",
     contactTitle: "راه‌های ارتباطی",
-    contactDesc: "برای ارتباط با تیم ElectroCar می‌توانید از اطلاعات زیر استفاده کنید.",
+    contactDesc: "برای ارتباط با تیم Voltinou می‌توانید از اطلاعات زیر استفاده کنید.",
     formTitle: "پیام خود را ارسال کنید",
     name: "نام و نام خانوادگی",
     namePh: "نام شما",
@@ -164,12 +164,12 @@ const ui = {
     faqTitle: "سوالات متداول",
   },
   en: {
-    badge: "Contact ElectroCar",
+    badge: "Contact Voltinou",
     titleA: "Get in",
     highlight: "touch with us",
-    desc: "Have a suggestion, a criticism, a collaboration request, or an idea for making ElectroCar better? Send us your message.",
+    desc: "Have a suggestion, a criticism, a collaboration request, or an idea for making Voltinou better? Send us your message.",
     contactTitle: "Ways to reach us",
-    contactDesc: "You can use the information below to get in touch with the ElectroCar team.",
+    contactDesc: "You can use the information below to get in touch with the Voltinou team.",
     formTitle: "Send us your message",
     name: "Full name",
     namePh: "Your name",

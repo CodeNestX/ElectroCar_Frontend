@@ -41,13 +41,13 @@ const slides = [
       title: "انرژی پاک،",
       highlight: "حرکت به سوی آینده",
       description:
-        "دنیای خودروهای برقی را با ElectroCar بهتر بشناسید",
+        "دنیای خودروهای برقی را با Voltinou بهتر بشناسید",
     },
     en: {
       title: "Clean energy,",
       highlight: "driving toward the future",
       description:
-        "Get to know the world of electric cars better with ElectroCar",
+        "Get to know the world of electric cars better with Voltinou",
     },
     image: "/images/hero-d3.webp",
     mobileImage: "/images/hero-m3.webp", // تصویر مخصوص موبایل

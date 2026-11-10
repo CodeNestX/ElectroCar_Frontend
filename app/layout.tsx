@@ -4,12 +4,12 @@ import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: {
-    default: "ElectroCar | دنیای خودروهای برقی",
-    template: "%s | ElectroCar",
+    default: "Voltinou | دنیای خودروهای برقی",
+    template: "%s | Voltinou",
   },
 
   description:
-    "ElectroCar؛ مجله تخصصی خودروهای برقی، اخبار، مقالات، فناوری، شارژ و معرفی خودروهای الکتریکی.",
+    "Voltinou؛ مجله تخصصی خودروهای برقی، اخبار، مقالات، فناوری، شارژ و معرفی خودروهای الکتریکی.",
 
   keywords: [
     "خودرو برقی",
@@ -17,17 +17,17 @@ export const metadata: Metadata = {
     "خودروهای الکتریکی",
     "شارژ خودرو برقی",
     "باتری خودرو برقی",
-    "ElectroCar",
+    "Voltinou",
   ],
 
   authors: [
     {
-      name: "ElectroCar",
+      name: "Voltinou",
     },
   ],
 
   openGraph: {
-    title: "ElectroCar | دنیای خودروهای برقی",
+    title: "Voltinou | دنیای خودروهای برقی",
     description:
       "اخبار، مقالات، فناوری و معرفی خودروهای برقی.",
     type: "website",

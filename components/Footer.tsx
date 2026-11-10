@@ -99,8 +99,8 @@ export default function Footer() {
                 </svg>
               </div>
 
-              <span className="text-xl font-extrabold">
-                Electro<span className="text-[#39f77b]">Car</span>
+              <span className="text-xl font-extrabold text-[#39f77b]">
+                Volt<span className="text-white">inou</span>
               </span>
             </Link>
 
@@ -114,14 +114,14 @@ export default function Footer() {
                 <>
                   مرجع اخبار، مقالات، بررسی و فناوری خودروهای برقی.
                   <br />
-                  با ElectroCar دنیای حرکت الکتریکی را بهتر بشناسید.
+                  با Voltinou دنیای حرکت الکتریکی را بهتر بشناسید.
                 </>
               ) : (
                 <>
                   Your source for electric vehicle news, articles,
                   reviews, and technology.
                   <br />
-                  Discover the world of electric mobility with ElectroCar.
+                  Discover the world of electric mobility with Voltinou.
                 </>
               )}
             </p>
@@ -192,7 +192,7 @@ export default function Footer() {
               href="/about"
               className="mb-5 block font-bold text-white transition hover:text-[#39f77b]"
             >
-              {isFa ? "درباره ElectroCar" : "About ElectroCar"}
+              {isFa ? "درباره Voltinou" : "About Voltinou"}
             </Link>
 
             <p
@@ -202,12 +202,12 @@ export default function Footer() {
             >
               {isFa ? (
                 <>
-                  ElectroCar یک پلتفرم محتوایی با تمرکز بر خودروهای
+                  Voltinou یک پلتفرم محتوایی با تمرکز بر خودروهای
                   الکتریکی، فناوری‌های نوین و آینده صنعت حمل‌ونقل است.
                 </>
               ) : (
                 <>
-                  ElectroCar is a content platform focused on electric
+                  Voltinou is a content platform focused on electric
                   vehicles, emerging technologies, and the future of
                   transportation.
                 </>
@@ -219,8 +219,8 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-12 border-t border-white/5 pt-6 text-center text-xs text-gray-600">
           {isFa
-            ? `© ${new Date().getFullYear()} ElectroCar — تمامی حقوق محفوظ است.`
-            : `© ${new Date().getFullYear()} ElectroCar — All rights reserved.`}
+            ? `© ${new Date().getFullYear()} Voltinou — تمامی حقوق محفوظ است.`
+            : `© ${new Date().getFullYear()} Voltinou — All rights reserved.`}
         </div>
 
       </div>

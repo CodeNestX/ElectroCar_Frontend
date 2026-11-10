@@ -69,7 +69,7 @@ export default function ArticlesPageFa() {
     <main dir={dir} className="mx-auto min-h-[70vh] max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="mb-10 text-center">
         <span className="mb-3 inline-block text-sm font-semibold text-green-400">
-          دانشنامه ElectroCar
+          دانشنامه Voltinou
         </span>
         <h1 className="text-3xl font-extrabold sm:text-4xl">
           مقالات خودروهای برقی

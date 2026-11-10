@@ -9,7 +9,7 @@ const values = {
     {
       icon: "⚡",
       title: "تمرکز بر خودروهای برقی",
-      text: "ElectroCar با تمرکز بر دنیای خودروهای الکتریکی، اطلاعات فنی و محتوای مرتبط با این حوزه را در اختیار کاربران قرار می‌دهد.",
+      text: "Voltinou با تمرکز بر دنیای خودروهای الکتریکی، اطلاعات فنی و محتوای مرتبط با این حوزه را در اختیار کاربران قرار می‌دهد.",
     },
     {
       icon: "◉",
@@ -19,7 +19,7 @@ const values = {
     {
       icon: "↗",
       title: "نگاه به آینده",
-      text: "فناوری خودروهای برقی با سرعت زیادی در حال تغییر است و ElectroCar تلاش می‌کند تحولات این حوزه را دنبال کند.",
+      text: "فناوری خودروهای برقی با سرعت زیادی در حال تغییر است و Voltinou تلاش می‌کند تحولات این حوزه را دنبال کند.",
     },
     {
       icon: "▣",
@@ -31,7 +31,7 @@ const values = {
     {
       icon: "⚡",
       title: "Focus on electric cars",
-      text: "By focusing on the world of electric cars, ElectroCar provides users with technical information and content related to this field.",
+      text: "By focusing on the world of electric cars, Voltinou provides users with technical information and content related to this field.",
     },
     {
       icon: "◉",
@@ -41,7 +41,7 @@ const values = {
     {
       icon: "↗",
       title: "Looking ahead",
-      text: "Electric car technology is changing fast, and ElectroCar strives to follow the developments in this field.",
+      text: "Electric car technology is changing fast, and Voltinou strives to follow the developments in this field.",
     },
     {
       icon: "▣",
@@ -66,38 +66,38 @@ const stats = {
 
 const ui = {
   fa: {
-    badge: "درباره ElectroCar",
+    badge: "درباره Voltinou",
     titleA: "آینده حمل‌ونقل",
     highlight: "الکتریکی",
     titleB: "را بشناسید",
-    desc: "ElectroCar یک پلتفرم محتوایی با تمرکز بر خودروهای برقی، فناوری‌های مرتبط، روش‌های شارژ و تحولات صنعت خودرو است.",
+    desc: "Voltinou یک پلتفرم محتوایی با تمرکز بر خودروهای برقی، فناوری‌های مرتبط، روش‌های شارژ و تحولات صنعت خودرو است.",
     aboutLabel: "درباره ما",
-    aboutTitle: "ElectroCar برای علاقه‌مندان به دنیای خودرو",
+    aboutTitle: "Voltinou برای علاقه‌مندان به دنیای خودرو",
     aboutP1:
       "صنعت خودرو در سال‌های اخیر تغییرات زیادی را تجربه کرده است. خودروهای برقی، سیستم‌های هوشمند، فناوری‌های جدید باتری و زیرساخت‌های شارژ، بخش مهمی از این تغییر هستند.",
     aboutP2:
-      "ElectroCar با هدف ارائه محتوای آموزشی، معرفی خودروها، بررسی فناوری‌ها و انتشار اخبار مرتبط با این حوزه طراحی شده است.",
-    whyLabel: "چرا ElectroCar؟",
+      "Voltinou با هدف ارائه محتوای آموزشی، معرفی خودروها، بررسی فناوری‌ها و انتشار اخبار مرتبط با این حوزه طراحی شده است.",
+    whyLabel: "چرا Voltinou",
     whyTitle: "محتوایی برای شناخت بهتر خودروهای برقی",
     sectionsLabel: "بخش‌های سایت",
-    sectionsTitle: "ElectroCar چه چیزهایی ارائه می‌دهد؟",
+    sectionsTitle: "Voltinou چه چیزهایی ارائه می‌دهد؟",
   },
   en: {
-    badge: "About ElectroCar",
+    badge: "About Voltinou",
     titleA: "Get to know the future of",
     highlight: "electric",
     titleB: "transportation",
-    desc: "ElectroCar is a content platform focused on electric cars, related technologies, charging methods, and developments in the automotive industry.",
+    desc: "Voltinou is a content platform focused on electric cars, related technologies, charging methods, and developments in the automotive industry.",
     aboutLabel: "About us",
-    aboutTitle: "ElectroCar, for car enthusiasts",
+    aboutTitle: "Voltinou, for car enthusiasts",
     aboutP1:
       "The automotive industry has gone through major changes in recent years. Electric cars, smart systems, new battery technologies, and charging infrastructure are an important part of this change.",
     aboutP2:
-      "ElectroCar is designed to provide educational content, introduce cars, review technologies, and publish news related to this field.",
-    whyLabel: "Why ElectroCar?",
+      "Voltinou is designed to provide educational content, introduce cars, review technologies, and publish news related to this field.",
+    whyLabel: "Why Voltinou?",
     whyTitle: "Content for getting to know electric cars better",
     sectionsLabel: "Site sections",
-    sectionsTitle: "What does ElectroCar offer?",
+    sectionsTitle: "What does Voltinou offer?",
   },
 };
 

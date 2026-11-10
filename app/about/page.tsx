@@ -1,9 +1,9 @@
 import AboutContent from "@/components/AboutContent";
 
 export const metadata = {
-  title: "درباره ما | ElectroCar",
+  title: "درباره ما | Voltinou",
   description:
-    "ElectroCar یک مجله تخصصی درباره خودروهای برقی، فناوری، شارژ و آینده حمل‌ونقل الکتریکی است.",
+    "Voltinou یک مجله تخصصی درباره خودروهای برقی، فناوری، شارژ و آینده حمل‌ونقل الکتریکی است.",
 };
 
 export default function AboutPage() {
