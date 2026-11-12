@@ -114,7 +114,7 @@ export default function Footer() {
                 <>
                   مرجع اخبار، مقالات، بررسی و فناوری خودروهای برقی.
                   <br />
-                  با Voltinou دنیای حرکت الکتریکی را بهتر بشناسید.
+                  با ولتینو دنیای حرکت الکتریکی را بهتر بشناسید.
                 </>
               ) : (
                 <>
@@ -192,7 +192,7 @@ export default function Footer() {
               href="/about"
               className="mb-5 block font-bold text-white transition hover:text-[#39f77b]"
             >
-              {isFa ? "درباره Voltinou" : "About Voltinou"}
+              {isFa ? "درباره ولتینو" : "About Voltinou"}
             </Link>
 
             <p
@@ -202,7 +202,7 @@ export default function Footer() {
             >
               {isFa ? (
                 <>
-                  Voltinou یک پلتفرم محتوایی با تمرکز بر خودروهای
+                  ولتینو یک پلتفرم محتوایی با تمرکز بر خودروهای
                   الکتریکی، فناوری‌های نوین و آینده صنعت حمل‌ونقل است.
                 </>
               ) : (

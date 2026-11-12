@@ -41,7 +41,7 @@ const slides = [
       title: "انرژی پاک،",
       highlight: "حرکت به سوی آینده",
       description:
-        "دنیای خودروهای برقی را با Voltinou بهتر بشناسید",
+        "دنیای خودروهای برقی را با ولتینو بهتر بشناسید",
     },
     en: {
       title: "Clean energy,",
