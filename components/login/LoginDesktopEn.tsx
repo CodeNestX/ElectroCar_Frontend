@@ -376,9 +376,7 @@ export default function LoginDesktopEn() {
               </div>
             )}
 
-            {isSignup && (
-              <Checkbox checked={f.agree} onChange={f.setAgree} label={t.terms} filled />
-            )}
+            
 
             <button
               type="submit"

@@ -4,7 +4,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: {
-    default: "Voltinou | دنیای خودروهای برقی",
+    default: "Voltinou",
     template: "%s | Voltinou",
   },
 

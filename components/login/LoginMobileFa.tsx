@@ -8,6 +8,13 @@ const t = {
   "welcomeB": "خودروهای برقی خوش آمدید!",
   "name": "نام و نام خانوادگی",
   "namePh": "نام و نام خانوادگی",
+  "firstName": "نام",
+  "firstNamePh": "نام",
+  "lastName": "نام خانوادگی",
+  "lastNamePh": "نام خانوادگی",
+  "email": "ایمیل",
+  "emailPh": "example@email.com",
+  "optional": "اختیاری",
   "id": "شماره تماس",
   "idPh": "09123456789",
   "password": "رمز عبور",
@@ -236,21 +243,38 @@ export default function LoginMobileFa() {
 
         <form onSubmit={f.handleSubmit} className="mt-9 space-y-4">
           {isSignup && (
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-gray-300">
-                {t.name}
-              </label>
-              <div className={fieldBox}>
-                <UserIcon className="h-6 w-6 shrink-0 text-[#39f77b]" />
-                <input
-                  type="text"
-                  required
-                  autoComplete="name"
-                  value={f.name}
-                  onChange={(e) => f.setName(e.target.value)}
-                  placeholder={t.namePh}
-                  className={inputClass}
-                />
+            <div className="grid grid-cols-2 gap-2.5">
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-300">
+                  {t.firstName}
+                </label>
+                <div className={fieldBox}>
+                  <input
+                    type="text"
+                    required
+                    autoComplete="given-name"
+                    value={f.firstName}
+                    onChange={(e) => f.setFirstName(e.target.value)}
+                    placeholder={t.firstNamePh}
+                    className={inputClass}
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-300">
+                  {t.lastName}
+                </label>
+                <div className={fieldBox}>
+                  <input
+                    type="text"
+                    required
+                    autoComplete="family-name"
+                    value={f.lastName}
+                    onChange={(e) => f.setLastName(e.target.value)}
+                    placeholder={t.lastNamePh}
+                    className={inputClass}
+                  />
+                </div>
               </div>
             </div>
           )}
@@ -272,6 +296,27 @@ export default function LoginMobileFa() {
                   onChange={(e) => f.setId(e.target.value)}
                   placeholder={t.idPh}
                   className={`${inputClass} text-right`}
+                />
+              </div>
+            </div>
+          )}
+
+          {isSignup && (
+            <div>
+              <label className="mb-2 flex items-center justify-between text-sm font-semibold text-gray-300">
+                <span>{t.email}</span>
+                <span className="text-xs font-normal text-gray-500">({t.optional})</span>
+              </label>
+              <div className={fieldBox}>
+                <MailIcon className="h-6 w-6 shrink-0 text-[#39f77b]" />
+                <input
+                  type="email"
+                  dir="ltr"
+                  autoComplete="email"
+                  value={f.email}
+                  onChange={(e) => f.setEmail(e.target.value)}
+                  placeholder={t.emailPh}
+                  className={`${inputClass} text-left`}
                 />
               </div>
             </div>
@@ -313,7 +358,7 @@ export default function LoginMobileFa() {
               <div className={fieldBox}>
                 <LockIcon className="h-6 w-6 shrink-0 text-[#39f77b]" />
                 <input
-                  type={f.showPass ? "text" : "password"}
+                  type={f.showConfirm ? "text" : "password"}
                   required
                   value={f.confirm}
                   onChange={(e) => f.setConfirm(e.target.value)}
@@ -321,6 +366,14 @@ export default function LoginMobileFa() {
                   placeholder={t.confirmPh}
                   className={inputClass}
                 />
+                <button
+                  type="button"
+                  onClick={() => f.setShowConfirm(!f.showConfirm)}
+                  aria-label={f.showConfirm ? t.hide : t.show}
+                  className="shrink-0 text-gray-500 transition hover:text-[#39f77b]"
+                >
+                  <EyeIcon off={f.showConfirm} className="h-5 w-5" />
+                </button>
               </div>
             </div>
           )}
@@ -363,18 +416,6 @@ export default function LoginMobileFa() {
                 {t.forgotLink}
               </button>
             </div>
-          )}
-
-          {isSignup && (
-            <label className="flex cursor-pointer items-center gap-3 text-sm text-gray-400">
-              <input
-                type="checkbox"
-                checked={f.agree}
-                onChange={(e) => f.setAgree(e.target.checked)}
-                className="h-5 w-5 accent-[#39f77b]"
-              />
-              {t.terms}
-            </label>
           )}
 
           <button

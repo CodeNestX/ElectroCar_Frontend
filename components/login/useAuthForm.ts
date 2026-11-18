@@ -66,6 +66,9 @@ export function useAuthForm({
   const [codePurpose, setCodePurpose] = useState<OtpPurpose>("register");
 
   const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
@@ -186,7 +189,6 @@ export function useAuthForm({
       if (!isValidId(destination)) return setError(m.invalidId);
       if (password.length < MIN_PASSWORD) return setError(m.passwordShort);
       if (password !== confirm) return setError(m.mismatch);
-      if (!agree) return setError(m.agreeTerms);
 
       setLoading(true);
       await requestCode("register");
@@ -220,12 +222,20 @@ export function useAuthForm({
 
     // The account now exists and the cookie is set. For a new account, save the name and password.
     if (codePurpose === "register") {
-      const [first, ...rest] = name.trim().split(/\s+/);
+      let finalFirst = firstName.trim();
+      let finalLast = lastName.trim();
+
+      if (!finalFirst && !finalLast && name.trim()) {
+        const [first, ...rest] = name.trim().split(/\s+/);
+        finalFirst = first || "";
+        finalLast = rest.join(" ");
+      }
 
       const profile = await updateMyProfile({
-        first_name: first || "",
-        last_name: rest.join(" "),
+        first_name: finalFirst,
+        last_name: finalLast,
         password,
+        email: email.trim() || undefined,
       });
 
       if (!profile.ok) {
@@ -245,6 +255,12 @@ export function useAuthForm({
 
     name,
     setName,
+    firstName,
+    setFirstName,
+    lastName,
+    setLastName,
+    email,
+    setEmail,
     id,
     setId,
     password,

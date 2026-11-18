@@ -8,6 +8,13 @@ const t = {
   "welcomeB": "خودروهای برقی خوش آمدید!",
   "name": "نام و نام خانوادگی",
   "namePh": "نام و نام خانوادگی",
+  "firstName": "نام",
+  "firstNamePh": "نام",
+  "lastName": "نام خانوادگی",
+  "lastNamePh": "نام خانوادگی",
+  "email": "ایمیل",
+  "emailPh": "example@email.com",
+  "optional": "اختیاری",
   "id": "شماره تماس",
   "idPh": "09123456789",
   "password": "رمز عبور",
@@ -24,22 +31,22 @@ const t = {
   "resend": "ارسال مجدد کد",
   "resendIn": "ارسال مجدد کد تا {s} ثانیه دیگر",
   "changeId": "تغییر شماره",
-  "copyright": "© 2026 Voltinou — آینده تحرک از اینجا شروع می‌شود.",
+  "copyright": "© 2026 ولتینو — آینده تحرک از اینجا شروع می‌شود.",
   "login": {
-    "title": "ورود به Voltinou",
+    "title": "ورود به ولتینو",
     "subtitle": "به حساب کاربری خود وارد شوید",
     "sideA": "اخبار، بررسی‌ها و فناوری فردا",
-    "sideB": "دنیای خودروهای برقی را با Voltinou بشناسید.",
+    "sideB": "دنیای خودروهای برقی را با ولتینو بشناسید.",
     "button": "ورود به حساب",
     "switchText": "هنوز حساب ندارید؟",
     "switchLink": "ثبت‌نام کنید",
     "switchTo": "signup"
   },
   "signup": {
-    "title": "ثبت‌نام در Voltinou",
+    "title": "ثبت‌نام در ولتینو",
     "subtitle": "حساب کاربری خود را ایجاد کنید",
     "sideA": "اخبار، بررسی‌ها و فناوری آینده",
-    "sideB": "دنیای خودروهای برقی را در Voltinou دنبال کنید.",
+    "sideB": "دنیای خودروهای برقی را در ولتینو دنبال کنید.",
     "button": "ارسال کد تأیید",
     "switchText": "قبلاً حساب دارید؟",
     "switchLink": "ورود به حساب",
@@ -237,34 +244,50 @@ export default function LoginDesktopFa() {
 
         {/* Form card */}
         <div className="w-full max-w-132.5 shrink-0 rounded-4xl border border-white/10 bg-[#08151b]/90 p-8 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] backdrop-blur-xl sm:p-9">
-          <h2 className="text-3xl font-extrabold leading-tight">{c.title}</h2>
+          <div className={isSignup ? "text-center" : ""}>
+            <h2 className="text-3xl font-extrabold leading-tight">{c.title}</h2>
 
-          <p className="mt-3 text-sm font-semibold text-gray-300">
-            {c.subtitle}
-            {isCode && (
-              <>
-                {" "}
-                <bdi dir="ltr" className="text-[#39f77b]">{f.destination}</bdi>
-              </>
-            )}
-          </p>
+            <p className="mt-3 text-sm font-semibold text-gray-300">
+              {c.subtitle}
+              {isCode && (
+                <>
+                  {" "}
+                  <bdi dir="ltr" className="text-[#39f77b]">{f.destination}</bdi>
+                </>
+              )}
+            </p>
+          </div>
 
           <form
             onSubmit={f.handleSubmit}
             className={isSignup ? "mt-6 space-y-4" : "mt-9 space-y-6"}
           >
             {isSignup && (
-              <div>
-                <label className="mb-2 block text-sm text-gray-300">{t.name}</label>
-                <input
-                  type="text"
-                  required
-                  autoComplete="name"
-                  value={f.name}
-                  onChange={(e) => f.setName(e.target.value)}
-                  placeholder={t.namePh}
-                  className={fieldClass}
-                />
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-300">{t.firstName}</label>
+                  <input
+                    type="text"
+                    required
+                    autoComplete="given-name"
+                    value={f.firstName}
+                    onChange={(e) => f.setFirstName(e.target.value)}
+                    placeholder={t.firstNamePh}
+                    className={fieldClass}
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-300">{t.lastName}</label>
+                  <input
+                    type="text"
+                    required
+                    autoComplete="family-name"
+                    value={f.lastName}
+                    onChange={(e) => f.setLastName(e.target.value)}
+                    placeholder={t.lastNamePh}
+                    className={fieldClass}
+                  />
+                </div>
               </div>
             )}
 
@@ -287,15 +310,30 @@ export default function LoginDesktopFa() {
               </div>
             )}
 
+            {isSignup && (
+              <div>
+                <label className="mb-2 flex items-center justify-between text-sm font-semibold text-gray-300">
+                  <span>{t.email}</span>
+                  <span className="text-xs font-normal text-gray-500">({t.optional})</span>
+                </label>
+                <input
+                  type="email"
+                  dir="ltr"
+                  autoComplete="email"
+                  value={f.email}
+                  onChange={(e) => f.setEmail(e.target.value)}
+                  placeholder={t.emailPh}
+                  className={`${fieldClass} text-left`}
+                />
+              </div>
+            )}
+
             {(isLogin || isSignup) && (
               <div>
                 <label className="mb-2 block text-sm font-semibold text-gray-300">
                   {t.password}
                 </label>
                 <div className="relative">
-                  {isSignup && (
-                    <LockIcon className="pointer-events-none absolute inset-s-5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
-                  )}
                   <input
                     type={f.showPass ? "text" : "password"}
                     required
@@ -303,27 +341,24 @@ export default function LoginDesktopFa() {
                     onChange={(e) => f.setPassword(e.target.value)}
                     autoComplete={isLogin ? "current-password" : "new-password"}
                     placeholder={isLogin ? t.passwordPhLogin : t.passwordPhSignup}
-                    className={`${fieldClass} ${isLogin ? "pe-14" : "ps-14"}`}
+                    className={`${fieldClass} pe-14`}
                   />
-                  {isLogin && (
-                    <button
-                      type="button"
-                      onClick={() => f.setShowPass(!f.showPass)}
-                      aria-label={f.showPass ? t.hide : t.show}
-                      className="absolute inset-e-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-[#39f77b]"
-                    >
-                      <EyeIcon off={f.showPass} className="h-6 w-6" />
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    onClick={() => f.setShowPass(!f.showPass)}
+                    aria-label={f.showPass ? t.hide : t.show}
+                    className="absolute inset-e-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-[#39f77b] cursor-pointer"
+                  >
+                    <EyeIcon off={f.showPass} className="h-6 w-6" />
+                  </button>
                 </div>
               </div>
             )}
 
             {isSignup && (
               <div>
-                <label className="mb-2 block text-sm text-gray-300">{t.confirm}</label>
+                <label className="mb-2 block text-sm font-semibold text-gray-300">{t.confirm}</label>
                 <div className="relative">
-                  <LockIcon className="pointer-events-none absolute inset-s-5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
                   <input
                     type={f.showConfirm ? "text" : "password"}
                     required
@@ -331,8 +366,16 @@ export default function LoginDesktopFa() {
                     onChange={(e) => f.setConfirm(e.target.value)}
                     autoComplete="new-password"
                     placeholder={t.confirmPh}
-                    className={`${fieldClass} ps-14`}
+                    className={`${fieldClass} pe-14`}
                   />
+                  <button
+                    type="button"
+                    onClick={() => f.setShowConfirm(!f.showConfirm)}
+                    aria-label={f.showConfirm ? t.hide : t.show}
+                    className="absolute inset-e-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-[#39f77b] cursor-pointer"
+                  >
+                    <EyeIcon off={f.showConfirm} className="h-6 w-6" />
+                  </button>
                 </div>
               </div>
             )}
@@ -374,10 +417,6 @@ export default function LoginDesktopFa() {
                   {t.forgotLink}
                 </button>
               </div>
-            )}
-
-            {isSignup && (
-              <Checkbox checked={f.agree} onChange={f.setAgree} label={t.terms} filled />
             )}
 
             <button

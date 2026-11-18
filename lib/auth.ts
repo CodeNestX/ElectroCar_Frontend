@@ -71,6 +71,7 @@ export const updateMyProfile = (data: {
   first_name: string;
   last_name: string;
   password: string;
+  email?: string;
 }) => request("/users/me", "PUT", data);
 
 /** Persian / Arabic digits -> English digits (so "۰۹۱۲..." works) */

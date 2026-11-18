@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -16,8 +17,8 @@ const menuItems = [
 ];
 
 const quickSearches = {
-  fa: ["Tesla", "BYD", "باتری", "شارژ سریع"],
-  en: ["Tesla", "BYD", "Battery", "Fast charging"],
+  fa: ["باتری", "شارژ سریع"],
+  en: ["Battery", "Fast charging"],
 };
 
 type Lang = "fa" | "en";
@@ -311,45 +312,73 @@ export default function Header() {
                 />
               </span>
 
-              {/* Logo */}
+              {/* Logo & Brand: Design #3 - Energy Split & Cyber Spark */}
               <Link
                 href="/"
                 aria-label="Voltinou"
-                className="group flex w-fit shrink-0 items-center gap-2.5 justify-self-start sm:gap-3"
+                className="group flex w-fit shrink-0 items-center gap-2.5 justify-self-start sm:gap-3.5"
+                dir={isFa ? "rtl" : "ltr"}
               >
-                <span className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-linear-to-br from-[#00c8ff]/10 to-[#39f77b]/10 transition-colors duration-300 group-hover:border-[#39f77b]/40 sm:h-11 sm:w-11">
-                  <span className="absolute inset-0 rounded-xl bg-[#39f77b]/25 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
-
-                  <svg
-                    viewBox="0 0 64 64"
-                    className="relative h-6 w-6 sm:h-7 sm:w-7"
-                    fill="none"
+                {/* Logo with ambient neon glow */}
+                <div className="relative flex items-center justify-center">
+                  <div
                     aria-hidden="true"
-                  >
-                    <path
-                      d="M42 7H18L8 25h19L17 57l35-37H33L42 7Z"
-                      fill="url(#logoGradient)"
-                    />
+                    className="absolute -inset-1.5 rounded-full bg-linear-to-r from-[#00c8ff]/25 to-[#39f77b]/30 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100"
+                  />
+                  <Image
+                    src="/images/logo.png"
+                    alt="Voltinou"
+                    width={90}
+                    height={44}
+                    priority
+                    className="relative h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105 sm:h-10"
+                  />
+                </div>
 
-                    <defs>
-                      <linearGradient
-                        id="logoGradient"
-                        x1="10"
-                        y1="10"
-                        x2="52"
-                        y2="52"
+                {isFa ? (
+                  <div className="relative flex items-center font-black text-2xl sm:text-[27px] tracking-tight leading-none select-none">
+                    {/* ولت: Volt in vibrant neon electric gradient */}
+                    <span className="bg-linear-to-l from-[#4efda4] to-[#39f77b] bg-clip-text text-transparent drop-shadow-[0_0_14px_rgba(57,247,123,0.55)] transition-all duration-300 group-hover:drop-shadow-[0_0_20px_rgba(57,247,123,0.8)]">
+                      ولت
+                    </span>
+
+                    {/* Cyber lightning bolt connecting the syllables */}
+                    <span className="mx-1 inline-flex items-center justify-center text-[#39f77b] drop-shadow-[0_0_8px_#39f77b] transition-transform duration-300 group-hover:scale-125">
+                      <svg
+                        className="h-4 w-4 sm:h-4.5 sm:w-4.5 animate-pulse"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
                       >
-                        <stop stopColor="#00c8ff" />
-                        <stop offset="1" stopColor="#39f77b" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </span>
+                        <path d="M13 2L3 14h8l-2 8 11-13h-8l3-7Z" />
+                      </svg>
+                    </span>
 
-                <span className="text-xl font-extrabold tracking-tight sm:text-2xl">
-                  <span className="text-[#39f77b]">Volt</span>
-                  <span className="text-white">inou</span>
-                </span>
+                    {/* ینو: inou in crisp crystal white */}
+                    <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.25)] transition-colors duration-300 group-hover:text-white/95">
+                      ینو
+                    </span>
+                  </div>
+                ) : (
+                  <div className="relative flex items-center font-black tracking-tight text-xl sm:text-2xl font-sans leading-none select-none">
+                    <span className="bg-linear-to-r from-[#39f77b] to-[#4efda4] bg-clip-text text-transparent drop-shadow-[0_0_14px_rgba(57,247,123,0.4)]">
+                      VOLT
+                    </span>
+                    <span className="mx-1 inline-flex items-center justify-center text-[#39f77b] drop-shadow-[0_0_8px_#39f77b] transition-transform duration-300 group-hover:scale-125">
+                      <svg
+                        className="h-3.5 w-3.5 sm:h-4 sm:w-4 animate-pulse"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M13 2L3 14h8l-2 8 11-13h-8l3-7Z" />
+                      </svg>
+                    </span>
+                    <span className="text-white font-extrabold tracking-wider transition-colors duration-300 group-hover:text-white/90">
+                      INOU
+                    </span>
+                  </div>
+                )}
               </Link>
 
               {/* Desktop navigation (centered) */}
@@ -642,7 +671,7 @@ export default function Header() {
                 </nav>
 
                 <p className="border-t border-white/5 pt-3 text-center text-xs text-white/30">
-                  Voltinou · {isFa ? "دنیای خودروهای برقی" : "The world of electric cars"}
+                  {isFa ? "ولتینو" : "Voltinou"} · {isFa ? "دنیای خودروهای برقی" : "The world of electric cars"}
                 </p>
               </div>
             </div>

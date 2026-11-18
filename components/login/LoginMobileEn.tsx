@@ -365,17 +365,7 @@ export default function LoginMobileEn() {
             </div>
           )}
 
-          {isSignup && (
-            <label className="flex cursor-pointer items-center gap-3 text-sm text-gray-400">
-              <input
-                type="checkbox"
-                checked={f.agree}
-                onChange={(e) => f.setAgree(e.target.checked)}
-                className="h-5 w-5 accent-[#39f77b]"
-              />
-              {t.terms}
-            </label>
-          )}
+          
 
           <button
             type="submit"
